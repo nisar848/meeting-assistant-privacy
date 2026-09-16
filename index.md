@@ -1,12 +1,12 @@
-# Privacy Policy for Meeting Assistant GPT
+# Privacy Policy for Meeting Summarizer GPT
 
-**Effective Date: September 15, 2026**
+**Effective Date: September 16, 2026**
 
-Meeting Assistant GPT is designed to help users process meeting transcripts, create meeting minutes, identify action items, and manage tasks. This Privacy Policy explains how information may be handled when users connect Meeting Assistant GPT to external services such as Trello.
+Meeting Summarizer GPT is designed to help users process meeting transcripts, create meeting minutes, identify action items, track task updates, and manage tasks. This Privacy Policy explains how information may be handled when users use Meeting Summarizer GPT or connect it to supported third-party services such as Trello.
 
 ## Information We Access
 
-Meeting Assistant GPT may process information that users voluntarily provide, including:
+Meeting Summarizer GPT may process information that users voluntarily provide, including:
 
 - Meeting transcripts
 - Meeting notes
@@ -14,80 +14,114 @@ Meeting Assistant GPT may process information that users voluntarily provide, in
 - Project names
 - Due dates
 - Task statuses
-- Other information included in materials submitted by the user
+- Supporting documents
+- Other information submitted by the user
 
-When a user connects a third-party service such as Trello, the integration may also access information necessary to perform the requested task, such as:
+When a user connects a third-party service such as Trello, the integration may access information necessary to perform the requested task, including:
 
 - Trello boards
 - Trello lists
 - Trello cards
 - Card titles and descriptions
 - Due dates
-- Task status information
+- Card status and location
+- Other Trello information necessary to perform an authorized task
 
-The integration will only access connected services after the user authorizes access.
+The integration accesses a user's Trello account only after the user authorizes the connection through Trello's authentication process.
 
 ## How Information Is Used
 
-Information is used only to provide functionality requested by the user, such as:
+Information is used to provide functionality requested by the user, such as:
 
 - Creating meeting minutes
 - Identifying confirmed action items
 - Reviewing existing tasks
+- Comparing meeting tasks with Trello cards
+- Checking for potential duplicate tasks
 - Creating Trello cards
 - Updating Trello cards
 - Moving or completing tasks when requested
-- Preventing duplicate task creation
+- Archiving cards when requested
+- Reporting task and status changes
 
-The service is not intended to create or modify external tasks without user authorization.
+Meeting Summarizer GPT is designed not to create or modify Trello tasks merely because a meeting transcript was processed. Trello changes require an authorized user request or synchronization request.
 
-## Authentication
+## Authentication and Connected Accounts
 
-Users connecting Trello or another supported service may be asked to authorize access through that service's authentication system.
+Users connecting Trello may be asked to sign in and authorize access through Atlassian / Trello's authentication system.
 
-Authentication credentials, passwords, API keys, or access tokens should never be entered directly into a ChatGPT conversation.
+Users should never enter passwords, API keys, OAuth tokens, client secrets, or other private authentication credentials directly into a ChatGPT conversation.
 
-Authentication tokens may be processed or stored as necessary to maintain an authorized connection to a third-party service.
+The Trello integration uses an OAuth authentication process. Cloudflare Workers is used as a secure intermediary between ChatGPT and Trello.
+
+During authentication, temporary information such as OAuth state, authorization handoff information, and authentication tokens may be processed or temporarily stored as necessary to complete the connection.
+
+Temporary OAuth records used by the integration are configured to expire after a short period and are not intended to serve as permanent storage for a user's Trello data.
+
+## Cloudflare Infrastructure
+
+The Trello integration uses Cloudflare Workers to securely communicate between Meeting Summarizer GPT and Trello.
+
+Cloudflare KV may temporarily store information required to complete an OAuth authentication flow, including short-lived authorization state and token handoff information.
+
+This temporary storage is used to authenticate the user and securely connect the user's Trello account. It is not intended to maintain a permanent database of meeting transcripts or Trello cards.
 
 ## Third-Party Services
 
-Meeting Assistant GPT may interact with third-party services, including:
+Meeting Summarizer GPT may interact with services including:
 
 - OpenAI / ChatGPT
 - Atlassian / Trello
+- Cloudflare Workers and Cloudflare KV
 - GitHub Pages
 
-Information sent to or retrieved from these services may also be subject to their respective privacy policies and terms.
+GitHub Pages is used to host this Privacy Policy.
+
+Information processed through third-party services may also be subject to those providers' respective privacy policies, security practices, and terms of service.
 
 ## Data Sharing
 
 Personal information is not sold to advertisers.
 
-Information may be transmitted to third-party services only when necessary to perform functionality requested by the user or as required by law.
+Information may be transmitted to third-party services when necessary to perform functionality requested or authorized by the user, operate the integration, protect the service, or comply with applicable legal requirements.
 
 ## Data Retention
 
-Information should be retained only for as long as reasonably necessary to provide the requested functionality, maintain authorized service connections, or meet security and legal requirements.
+Meeting Summarizer GPT's Trello integration is designed to minimize persistent storage of user information.
 
-Third-party services may maintain their own records according to their respective retention policies.
+Temporary OAuth information may be retained for a short period while authentication is being completed and may expire automatically after the authentication window.
+
+Meeting transcripts and other information submitted through ChatGPT may be handled according to OpenAI's applicable policies and account settings.
+
+Trello, Cloudflare, GitHub, and other third-party providers may maintain their own records according to their respective retention policies.
 
 ## User Control
 
-Users can choose whether to connect external services such as Trello.
+Users choose whether to connect Trello.
 
-Users may revoke access through the applicable third-party service or account settings.
+Users may use Meeting Summarizer GPT for meeting analysis without connecting an external task-management service.
 
-Users may also choose not to use external task-management integrations and may continue using Meeting Assistant GPT for meeting analysis without connecting Trello.
+Users may revoke Trello access through the applicable Trello or Atlassian account settings.
+
+Users may also choose not to authorize a requested Trello action.
+
+Meeting Summarizer GPT is designed to distinguish between reading Trello information and modifying Trello information. Actions such as creating, moving, updating, completing, or archiving cards are performed only when authorized through the user's request.
 
 ## Security
 
-Reasonable measures are used to protect authentication credentials and information transmitted through connected services. However, no internet-based service can guarantee absolute security.
+Reasonable technical measures are used to protect authentication information and communications with connected services.
 
-Users should never submit passwords, private API keys, secret tokens, or other sensitive authentication credentials directly into a ChatGPT conversation.
+Sensitive application credentials are stored using protected environment-secret mechanisms rather than being included in public source code or GPT instructions.
+
+Temporary OAuth information is stored only as necessary to complete authentication and is configured with short expiration periods.
+
+However, no internet-based service can guarantee absolute security.
+
+Users should never submit passwords, private API keys, OAuth tokens, client secrets, or other sensitive credentials directly into a ChatGPT conversation.
 
 ## Changes to This Privacy Policy
 
-This Privacy Policy may be updated as Meeting Assistant GPT adds, removes, or changes integrations or functionality.
+This Privacy Policy may be updated as Meeting Summarizer GPT adds, removes, or changes integrations, infrastructure, or functionality.
 
 The effective date at the top of this page will be updated when significant changes are made.
 
